@@ -18,7 +18,7 @@ BaselineOfMooseProject >> baseline: spec [
 			"Packages"
 			spec
 				package: 'Moose-Project' with: [ spec requires: #('Famix') ];
-				package: 'Moose-Project-Tests' with: [ spec requires: #('Moose-Project') ].
+				package: 'Moose-Project-Tests' with: [ spec requires: #('Moose-Project' 'FamixTestModels') ].
 
 			"Groups"
 			spec
@@ -30,9 +30,10 @@ BaselineOfMooseProject >> baseline: spec [
 BaselineOfMooseProject >> famix: spec [
 	spec
 		baseline: 'Famix'
-		with: [ spec
+			with: [ spec
 				loads: #('Minimal');
-				repository: 'github://moosetechnology/Famix:development/src' ]
+				repository: 'github://moosetechnology/Famix:development/src' ];
+		project: 'FamixTestModels' copyFrom: 'Famix' with: [ spec loads: 'TestModels' ]
 ]
 
 { #category : #accessing }
