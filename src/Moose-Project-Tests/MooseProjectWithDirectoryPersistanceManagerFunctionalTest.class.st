@@ -84,7 +84,7 @@ MooseProjectWithDirectoryPersistanceManagerFunctionalTest >> testSaveVersionFail
 	mooseProject addVersion: newVersion.
 	versionDirectory := directoryPersistanceManager obtainDirectoryDated: newVersion date.
 	mseContent := (versionDirectory / 'model.mse') contents.
-	corruptedEntity := CPPSNamedEntity new name: OrderedCollection new.
+	corruptedEntity := MooseProjectEntityOutsideMetamodel new.
 	newVersion mooseModel add: corruptedEntity.
 	self should: [ newVersion persist ] raise: Error.
 	self assert: (versionDirectory / 'model.mse') contents equals: mseContent
