@@ -138,7 +138,7 @@ MooseProjectVersion >> sourceHasRootFolder [
 { #category : #updating }
 MooseProjectVersion >> updatePathOfModelTo: aStringPath [
 	self mooseModel rootFolder: aStringPath.
-	self mooseModel privateState flushGroups.
+	self mooseModel flush.
 	self mooseSource directory: aStringPath
 ]
 
