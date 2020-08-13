@@ -15,7 +15,7 @@ BaselineOfMooseProject >> baseline: spec [
 		do: [ "Dependencies"
 			self
 				famix: spec;
-				systemInteraction: self.
+				systemInteraction: spec.
 
 			"Packages"
 			spec
