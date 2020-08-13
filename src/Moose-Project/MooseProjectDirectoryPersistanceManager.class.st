@@ -86,7 +86,10 @@ MooseProjectDirectoryPersistanceManager >> obtainSourceDirectoryDated: aDate [
 MooseProjectDirectoryPersistanceManager >> persistDirectorySource: aMooseDirectorySource [
 	| destinationSourceDirectory |
 	destinationSourceDirectory := self obtainSourceDirectoryDated: aMooseDirectorySource date.
-	aMooseDirectorySource directory copyAllTo: destinationSourceDirectory.
+	
+	"We do not use Pharo copy utility since it is too faulty. Instead we use the system command."
+	SICommand default copyAll: aMooseDirectorySource directory to: destinationSourceDirectory.
+
 	^ MooseDirectorySource copyDated: aMooseDirectorySource date directory: destinationSourceDirectory
 ]
 

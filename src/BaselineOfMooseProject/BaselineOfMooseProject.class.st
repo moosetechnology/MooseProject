@@ -13,11 +13,13 @@ BaselineOfMooseProject >> baseline: spec [
 	spec
 		for: #common
 		do: [ "Dependencies"
-			self famix: spec.
+			self
+				famix: spec;
+				systemInteraction: self.
 
 			"Packages"
 			spec
-				package: 'Moose-Project' with: [ spec requires: #('Famix') ];
+				package: 'Moose-Project' with: [ spec requires: #('Famix' 'SystemInteraction') ];
 				package: 'Moose-Project-Tests' with: [ spec requires: #('Moose-Project' 'FamixTestModels') ].
 
 			"Groups"
@@ -39,4 +41,9 @@ BaselineOfMooseProject >> famix: spec [
 { #category : #accessing }
 BaselineOfMooseProject >> projectClass [
 	^ MetacelloCypressBaselineProject
+]
+
+{ #category : #dependencies }
+BaselineOfMooseProject >> systemInteraction: spec [
+	spec baseline: 'SystemInteraction' with: [ spec repository: 'github://jecisc/SystemInteraction:v1.x.x/src' ]
 ]
